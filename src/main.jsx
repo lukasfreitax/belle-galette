@@ -9,7 +9,7 @@ import App from './App.jsx'
 // dentro da <div id="root">. O BrowserRouter habilita as rotas em toda a aplicação.
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
     </BrowserRouter>
   </StrictMode>,
