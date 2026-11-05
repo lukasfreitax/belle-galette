@@ -47,7 +47,7 @@ jobs:
     needs: build
 
     steps:
-      - name: Publicas no GitHub pages
+      - name: Publicar no GitHub pages
         id: deployment
         uses: actions/deploy-pages@v4
         
