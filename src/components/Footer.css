@@ -1,0 +1,40 @@
+.footer {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 20px;
+  color: var(--texto-suave);
+  background: var(--azul-profundo);
+  border-top: 1px solid var(--linha);
+}
+.footer__instagram {
+  display: inline-flex;
+  color: var(--creme);
+  transition: color var(--transicao), transform var(--transicao);
+}
+.footer__instagram:hover {
+  color: var(--rosa);
+  transform: translateY(-1px);
+}
+.footer__instagram svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+.footer__instagram-ponto {
+  fill: currentColor;
+  stroke: none;
+}
+.footer__credito {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+.footer__credito a {
+  color: var(--creme);
+  text-decoration: underline;
+  text-decoration-color: var(--rosa);
+  text-underline-offset: 3px;
+}
