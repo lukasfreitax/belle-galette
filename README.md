@@ -108,9 +108,10 @@ Referência estética em protótipos (aguardando aprovação da cliente). Arquiv
 - **Cores:** azul acinzentado como base, creme para textos e respiros, rosa framboesa como acento pontual.
 - **Tipografia:** serifada elegante nos títulos; sem serifa leve no corpo.
 - **Favicon:** PNG derivado da logo em public/favicon.png.
-- **Rodapé:** ícone do Instagram e crédito “Produzido por @lukescripts”; o ícone aponta atualmente para o perfil informado.
+- **Rodapé:** chamada “Siga a Belle no Instagram” com um ícone e, abaixo, o crédito “Produzido por lukescripts”, sem faixa de fundo adicional. O perfil oficial será vinculado quando definido.
 - **Estilo:** fotografia protagonista; a imagem principal permanece nítida, enquanto a camada de fundo recebe desfoque leve e uma máscara radial suaviza as bordas.
 - **Logo:** selo circular com a Torre Eiffel. O PNG com transparência é usado no cabeçalho e o JPG original fica preservado em public/images.
+- **Capa de Macarons:** `public/images/capa-macarons.jpg`; substitua a imagem mantendo esse nome.
 
 Paleta proposta (valores aproximados, a ajustar com a identidade oficial):
 
@@ -167,7 +168,7 @@ belle-galette/
 - Commits seguem o padrão `tipo: descrição` (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`).
 
 - GitHub Pages publica a pasta dist. O workflow cria dist/404.html a partir de dist/index.html para permitir acesso direto às rotas do React Router.
-- O Vite está preparado para o slug belle-galette; a publicação com esse caminho depende da renomeação do repositório no GitHub.
+- O Vite está configurado para o slug belle-galette. O repositório já foi renomeado; validar o Pages após o merge e o deploy.
 
 ### Roadmap do MVP
 
@@ -217,8 +218,8 @@ Necessidade → Requisito → Protótipo → Validação → Arquitetura → Imp
 - [ ] Ela já tem **fotos profissionais** de cada produto?
 - [ ] Existe **manual de marca** (cores, fontes oficiais)?
 - [ ] Terá **redes sociais** vinculadas ao site (Instagram)?
-- [ ] Confirmar o perfil oficial da Belle Galette para o ícone do Instagram; por enquanto ele aponta para @lukescripts.
-- [ ] Renomear o repositório no GitHub para belle-galette e confirmar o endereço do Pages.
+- [ ] Informar o perfil oficial da Belle Galette para vincular ao ícone do Instagram.
+- [ ] Confirmar o acesso ao GitHub Pages após o merge e o deploy do PR.
 
 ---
 

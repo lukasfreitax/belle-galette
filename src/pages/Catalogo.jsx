@@ -11,14 +11,19 @@ export default function Catalogo() {
   const { categoriaId = 'macarons' } = useParams()
   const categoria = buscarCategoria(categoriaId)
   const ocasioes = categoria?.ocasioes ?? []
-  const { indice, proximo, anterior, irPara, gestos } = useCarrossel(Math.max(ocasioes.length, 1))
+  const slides = categoria
+    ? [
+        ...(categoria.capa ? [{ ...categoria.capa, id: 'capa-categoria', tipo: 'categoria' }] : []),
+        ...ocasioes.map((ocasiao) => ({ ...ocasiao, tipo: 'ocasiao' })),
+      ]
+    : []
+  const { indice, proximo, anterior, irPara, gestos } = useCarrossel(Math.max(slides.length, 1))
 
   if (!categoria) return <Navigate to="/catalogo" replace />
-  const ocasiao = ocasioes[indice]
+  const slide = slides[indice]
 
   return (
     <section className="catalogo">
-      {/* Faixa 1 (azul profundo): título e abas de categoria */}
       <div className="catalogo__topo">
         <p className="selo">Explore nossas criações</p>
         <h1 className="catalogo__titulo">{categoria.nome}</h1>
@@ -29,7 +34,8 @@ export default function Catalogo() {
             const Icone = iconesPorNome[c.icone]
             return (
               <Link
-                key={c.id} to={`/catalogo/${c.id}`}
+                key={c.id}
+                to={`/catalogo/${c.id}`}
                 className={`aba ${c.id === categoria.id ? 'aba--ativa' : ''}`}
                 aria-current={c.id === categoria.id ? 'page' : undefined}
               >
@@ -40,23 +46,28 @@ export default function Catalogo() {
         </nav>
       </div>
 
-      {/* Faixa 2 (azul base): vitrine da ocasião */}
       <div className="catalogo__vitrine" {...gestos}>
-        {ocasiao ? (
+        {slide ? (
           <>
-            <Seta lado="esq" onClick={anterior} rotulo="Ocasião anterior" />
-            <Seta lado="dir" onClick={proximo} rotulo="Próxima ocasião" />
+            <Seta lado="esq" onClick={anterior} rotulo="Criação anterior" />
+            <Seta lado="dir" onClick={proximo} rotulo="Próxima criação" />
 
-            <div className="palco" key={ocasiao.id}>
-              <img className="palco__foto" src={ocasiao.foto} alt={ocasiao.titulo} />
+            <div className={`palco palco--${slide.tipo}`} key={slide.id}>
+              <img className="palco__foto" src={slide.foto} alt={slide.alt ?? slide.titulo} />
               <article className="card">
-                <p className="card__selo">{ocasiao.selo}</p>
+                <p className="card__selo">{slide.selo}</p>
                 <span className="card__linha" />
-                <h2 className="card__titulo">{ocasiao.titulo}</h2>
-                <p className="card__texto">{ocasiao.descricao}</p>
-                <Link to={`/catalogo/${categoria.id}/${ocasiao.id}`} className="botao">
-                  Conhecer esta ocasião <IconeSetaDir />
-                </Link>
+                <h2 className="card__titulo">{slide.titulo}</h2>
+                <p className="card__texto">{slide.descricao}</p>
+                {slide.tipo === 'categoria' ? (
+                  <button type="button" className="botao" onClick={proximo}>
+                    Conheça a categoria <IconeSetaDir />
+                  </button>
+                ) : (
+                  <Link to={`/catalogo/${categoria.id}/${slide.id}`} className="botao">
+                    Conhecer esta ocasião <IconeSetaDir />
+                  </Link>
+                )}
               </article>
             </div>
           </>
@@ -70,11 +81,10 @@ export default function Catalogo() {
         <Folhas lado="direita" />
       </div>
 
-      {/* Faixa 3 (azul profundo): indicadores e dica */}
-      {ocasiao && (
+      {slides.length > 0 && (
         <div className="catalogo__rodape">
-          <Pontos total={ocasioes.length} atual={indice} onEscolher={irPara} rotulo="Ocasião" />
-          <Dica texto="Role para ver outras ocasiões" onClick={proximo} />
+          <Pontos total={slides.length} atual={indice} onEscolher={irPara} rotulo="Criação" />
+          <Dica texto="Deslize para explorar as criações" onClick={proximo} />
         </div>
       )}
     </section>
