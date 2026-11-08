@@ -1,17 +1,38 @@
 .footer {
-  min-height: 64px;
+  min-height: var(--altura-rodape);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 14px 20px;
+  gap: 5px;
+  padding: 8px 20px 12px;
   color: var(--texto-suave);
-  background: var(--azul-profundo);
-  border-top: 1px solid var(--linha);
+  background: transparent;
+}
+.footer__ornamento {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--creme);
+  opacity: 0.8;
+}
+.footer__ornamento span {
+  width: 72px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+.footer__ornamento svg {
+  width: 16px;
+  height: 28px;
 }
 .footer__instagram {
   display: inline-flex;
+  align-items: center;
+  gap: 9px;
   color: var(--creme);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
   transition: color var(--transicao), transform var(--transicao);
 }
 .footer__instagram:hover {
@@ -19,8 +40,9 @@
   transform: translateY(-1px);
 }
 .footer__instagram svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  flex: none;
   stroke: currentColor;
   stroke-width: 1.7;
 }
@@ -29,12 +51,13 @@
   stroke: none;
 }
 .footer__credito {
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
+  font-family: var(--fonte-titulo);
+  font-size: 0.94rem;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: rgba(244, 238, 228, 0.76);
 }
-.footer__credito a {
+.footer__credito span {
   color: var(--creme);
-  text-decoration: underline;
-  text-decoration-color: var(--rosa);
-  text-underline-offset: 3px;
+  font-style: normal;
 }

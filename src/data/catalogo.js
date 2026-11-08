@@ -10,6 +10,13 @@ export const categorias = [
     nome: 'Macarons',
     icone: 'macaron',
     subtitulo: 'Mais que um doce, uma experiência.',
+    capa: {
+      selo: 'Um clássico francês',
+      titulo: 'Macarons artesanais',
+      descricao: 'Com casquinha delicada, interior macio e recheios cremosos, cada macaron combina sabor, textura e cuidado artesanal.',
+      foto: foto('capa-macarons.jpg'),
+      alt: 'Macarons artesanais em diferentes cores',
+    },
     ocasioes: [
       {
         id: 'torre-de-macarons',

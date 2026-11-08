@@ -22,9 +22,6 @@ export default function Home() {
         <Link to="/catalogo" className="botao botao--cheio">
           Conheça nosso catálogo <IconeSetaDir />
         </Link>
-        <div className="home__ornamento" aria-hidden="true">
-          <span /><svg viewBox="0 0 24 40" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"><path d="M12 3v5M12 8L7 37M12 8l5 29M9.500 20h5M8 28h8M6 37h12M8 37q4-12 8 0" /></svg><span />
-        </div>
       </div>
     </section>
   )
