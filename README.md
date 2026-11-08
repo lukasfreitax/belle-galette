@@ -2,8 +2,8 @@
 
 Catálogo digital interativo para a **Belle Galette Pâtisserie**, confeitaria artesanal especializada em macarons franceses.
 
-> **Status:** em definição. Requisitos em rascunho, aguardando validação da cliente (Gisele).
-> **Última atualização:** 29/10/2026
+> **Status:** protótipo funcional em revisão; requisitos, categorias e conteúdo ainda aguardam validação da cliente (Gisele).
+> **Última atualização:** 08/11/2026
 
 ---
 
@@ -107,8 +107,10 @@ Referência estética em protótipos (aguardando aprovação da cliente). Arquiv
 
 - **Cores:** azul acinzentado como base, creme para textos e respiros, rosa framboesa como acento pontual.
 - **Tipografia:** serifada elegante nos títulos; sem serifa leve no corpo.
-- **Estilo:** fotografia ocupando a maior área, fundo desfocado com a própria imagem, elementos de vidro (*glass*) com moderação, folhas decorativas apenas como detalhe.
-- **Logo:** selo circular com a Torre Eiffel.
+- **Favicon:** PNG derivado da logo em public/favicon.png.
+- **Rodapé:** ícone do Instagram e crédito “Produzido por @lukescripts”; o ícone aponta atualmente para o perfil informado.
+- **Estilo:** fotografia protagonista; a imagem principal permanece nítida, enquanto a camada de fundo recebe desfoque leve e uma máscara radial suaviza as bordas.
+- **Logo:** selo circular com a Torre Eiffel. O PNG com transparência é usado no cabeçalho e o JPG original fica preservado em public/images.
 
 Paleta proposta (valores aproximados, a ajustar com a identidade oficial):
 
@@ -128,22 +130,23 @@ Paleta proposta (valores aproximados, a ajustar com a identidade oficial):
 |------|---------|--------|
 | Biblioteca de interface | React | Componentes reutilizáveis |
 | Ferramenta de build | Vite | Desenvolvimento rápido |
-| Rotas | React Router (a instalar quando houver várias páginas) | Navegação entre Home, Catálogo e Pedidos |
+| Rotas | React Router (BrowserRouter com basename definido pelo Vite) | Navegação entre Home, Catálogo e Pedidos |
 | Dados | Arquivos locais em `src/data/` | MVP sem backend |
 | Integração | Link `wa.me` com mensagem pronta | Pedido via WhatsApp sem servidor |
 
-Estrutura prevista:
+Estrutura atual (resumo):
 
 ```
-belle-gallete/
+belle-galette/
 ├── docs/
 │   ├── design/          protótipos e referências visuais
 │   ├── decisoes.md      decisões de projeto e justificativas
-│   └── validacoes.md    (a criar) registro de aprovações e pedidos da cliente
+│   └── validacoes.md    registro de validações, pendências e decisões da cliente
 ├── public/
+│   ├── favicon.png
+│   └── images/       fotos do catálogo e arquivos da logo
 ├── src/
-│   ├── assets/          imagens e logo
-│   ├── components/      peças reutilizáveis da interface
+│   ├── components/      peças reutilizáveis (Header, Footer, Logo etc.)
 │   ├── pages/           telas (Home, Catálogo, Pedidos)
 │   ├── data/            produtos, categorias e ocasiões
 │   ├── hooks/           lógica reutilizável (carrossel)
@@ -162,6 +165,9 @@ belle-gallete/
 - **Uma branch por recurso**, com nome `feature/nome-do-recurso`.
 - Alterações entram na `main` por **Pull Request**, após revisão e testes.
 - Commits seguem o padrão `tipo: descrição` (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`).
+
+- GitHub Pages publica a pasta dist. O workflow cria dist/404.html a partir de dist/index.html para permitir acesso direto às rotas do React Router.
+- O Vite está preparado para o slug belle-galette; a publicação com esse caminho depende da renomeação do repositório no GitHub.
 
 ### Roadmap do MVP
 
@@ -197,7 +203,7 @@ Necessidade → Requisito → Protótipo → Validação → Arquitetura → Imp
 
 | Data | Item apresentado | Resultado | Alterações pedidas |
 |------|------------------|-----------|--------------------|
-| — | Protótipos v1 (home, catálogo, galeria) | Aguardando | — |
+| 08/11/2026 | Protótipo funcional v2 (home, catálogo, galeria, logo e rodapé) | Aguardando validação | Confirmar fluidez do carrossel, categorias do MVP e destino do Instagram |
 
 ---
 
@@ -206,11 +212,13 @@ Necessidade → Requisito → Protótipo → Validação → Arquitetura → Imp
 - [ ] Quais são as **ocasiões** que ela quer destacar?
 - [ ] Os produtos terão **preço visível** ou só sob consulta?
 - [ ] Qual o número de **WhatsApp** e o texto padrão da mensagem?
-- [ ] Todas as categorias (Doces Finos, Bolos, Kits) entram no MVP ou só Macarons?
+- [ ] Na reunião, definir quais categorias entram no MVP e em que ordem: Macarons, Doces Finos, Bolos e Kits & Presentes. Hoje apenas Macarons tem conteúdo.
+- [ ] Na reunião, validar a fluidez e o comportamento do carrossel. No protótipo atual, categorias são abas e o carrossel percorre ocasiões; confirmar se essa distinção corresponde ao que a cliente espera.
 - [ ] Ela já tem **fotos profissionais** de cada produto?
 - [ ] Existe **manual de marca** (cores, fontes oficiais)?
 - [ ] Terá **redes sociais** vinculadas ao site (Instagram)?
-- [ ] Nome oficial: **Belle Galette** ou **Belle Gallette**? (o logo usa "Galette")
+- [ ] Confirmar o perfil oficial da Belle Galette para o ícone do Instagram; por enquanto ele aponta para @lukescripts.
+- [ ] Renomear o repositório no GitHub para belle-galette e confirmar o endereço do Pages.
 
 ---
 
@@ -243,8 +251,12 @@ npm run build    # gera a versão de produção em dist/
 | Trocar o número do WhatsApp | `src/services/whatsapp.js` |
 | Mexer em uma tela | `src/pages/` |
 | Mexer em cabeçalho, setas, pontos | `src/components/` |
+| Trocar a logo do cabeçalho | public/images/logo-belle-galette.png e src/components/Logo.jsx |
+| Trocar o favicon da aba | public/favicon.png e index.html |
+| Ajustar o fade/blur das imagens | src/pages/Home.css e src/pages/Galeria.css |
+| Editar o rodapé | src/components/Footer.jsx e Footer.css |
 
-> **Atenção:** as fotos em `public/images/` são provisórias (recortes dos protótipos). Substitua pelas fotos reais da Belle mantendo os nomes, ou altere os nomes em `src/data/catalogo.js`.
+> **Atenção:** as fotos dos produtos em public/images continuam provisórias. A logo original está preservada como JPG e a versão transparente usada no site está em PNG. Substitua as fotos dos produtos mantendo os nomes ou atualize src/data/catalogo.js.
 
 ---
 

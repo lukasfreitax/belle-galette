@@ -6,13 +6,13 @@
 }
 .home__fundo {
   position: absolute; inset: -40px; z-index: -3; background-size: cover; background-position: center;
-  filter: blur(26px) saturate(1.1);
+  filter: blur(20px) saturate(0.92);
 }
 /* Foto nítida: ocupa a largura da tela e se dissolve nas bordas (com a foto real em retrato, basta usar cover) */
 .home__foto {
   position: absolute; top: 70px; left: 0; width: 100%; height: auto; z-index: -2;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22%, #000 70%, transparent 100%);
-          mask-image: linear-gradient(180deg, transparent 0, #000 22%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 84% 78% at 50% 48%, #000 56%, transparent 100%);
+          mask-image: radial-gradient(ellipse 84% 78% at 50% 48%, #000 56%, transparent 100%);
 }
 .home__veu {
   position: absolute; inset: 0; z-index: -1;

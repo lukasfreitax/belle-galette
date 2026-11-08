@@ -34,6 +34,9 @@ jobs:
       - name: Gerar versão de produção
         run: npm run build
 
+      - name: Preparar fallback das rotas do SPA
+        run: cp dist/index.html dist/404.html
+
       - name: Preparar arquivos para publicação
         uses: actions/upload-pages-artifact@v3
         with:
