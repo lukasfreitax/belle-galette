@@ -16,7 +16,7 @@ export default function Footer() {
 
       <a
         className="footer__instagram"
-        href={instagramUrl}
+        href={"https://www.instagram.com/belle_galette/"}
         target="_blank"
         rel="noreferrer"
         aria-label="Siga a Belle no Instagram"
