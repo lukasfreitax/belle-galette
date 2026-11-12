@@ -7,8 +7,7 @@ export default function Sobre() {
       <p className="selo">Sobre a Belle</p>
       <h1 className="pagina__titulo">Belle Galette Pâtisserie</h1>
       <p className="pagina__texto">
-        Conteúdo provisório. Aqui entrará a história da Belle, a inspiração francesa e o
-        cuidado artesanal de cada receita, a ser definido com a cliente.
+        Na Belle Galette, Gisele Canalli transforma sua paixão pela confeitaria francesa e pela panificação em criações artesanais que unem técnica, delicadeza e amor em cada detalhe, tornando cada sabor uma experiência especial.
       </p>
     </section>
   )
